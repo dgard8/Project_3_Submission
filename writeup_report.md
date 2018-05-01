@@ -17,16 +17,12 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/placeholder.png "Model Visualization"
-[image2]: ./examples/placeholder.png "Grayscaling"
-[image3]: ./examples/placeholder_small.png "Recovery Image"
-[image4]: ./examples/placeholder_small.png "Recovery Image"
-[image5]: ./examples/placeholder_small.png "Recovery Image"
-[image6]: ./examples/placeholder_small.png "Normal Image"
-[image7]: ./examples/placeholder_small.png "Flipped Image"
-
-## Rubric Points
-### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.  
+[centerImage]: ./images/center_image.jpg "Center Image"
+[leftImage]: ./images/left_image.jpg "Left Image"
+[rightImage]: ./images/right_image.jpg "Right Image"
+[recovery1]: ./images/recovery_1.jpg "Recovery 1"
+[recovery2]: ./images/recovery_2.jpg "Recovery 2"
+[recovery3]: ./images/recovery_3.jpg "Recovery 3"
 
 ---
 ### Code Summary
@@ -55,18 +51,21 @@ To help the system learn how to handle off-center driving, I used the images fro
 
 The majority of the testing data is normal center-lane driving. This is important because we want the car to drive in the center, so we need our data to teach it how to do that. Here is an image of what driving in the center looks like:
 
-![alt text][image2]
+![center driving][centerImage]
 
 To ensure the car would move back to the center if it drifted to the side of the road, I recorded data starting at the side of the road and moving back towards the center. Here are some images that show what this looks like and what we hope the car will do if it drifts (though ideally it never gets off-center in the first place):
 
-![alt text][image3]
-![alt text][image4]
-![alt text][image5]
+![recovery starting][recovery1]
+![recovery middle][recovery2]
+![recovery end][recovery3]
 
 To further help the car move toward the center and to augment the data, I used the cameras on the right and left side of the car. I added/subtraced 0.05 from the steering angle so the model would learn that it needs to turn more/less if it gets off center. Here are what the three images from the car look like:
 
-To augment the data sat, I also flipped images and angles thinking that this would ... For example, here is an image that has then been flipped:
+![center driving][centerImage]
+![left driving][leftImage]
+![right driving][rightImage]
 
-![alt text][image6]
-![alt text][image7]
+### Conclusion
+
+I was able to achieve fairly successful autonomous driving. The car does get pretty close to the edge right around the dirt turn-off but it manages to recover successfully. This was acheived using the provided data supplemented with data taken around turns and data taken recovering from the edge of the road.
 
